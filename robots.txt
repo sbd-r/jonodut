@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sbd-r.github.io/jonodut/sitemap.xml
