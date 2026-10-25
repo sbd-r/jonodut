@@ -70,6 +70,9 @@ button.alt{background:transparent;color:var(--g);border:1.5px solid var(--g)}
 .paper .sub{font-weight:700;text-decoration:underline;margin:10px 0}
 .paper .att img{max-width:150px;max-height:110px;margin:3px;border:1px solid #999}
 .paper .ft{margin-top:14px;font-size:12px;border-top:1px solid #888;padding-top:6px;color:#333;word-break:break-all}
+.paper [contenteditable=true]{outline:1px dashed #16a34a;outline-offset:3px;border-radius:4px;min-height:1.5em;-webkit-user-modify:read-write-plaintext-only}
+.paper [contenteditable=true]:focus{outline:2px solid #16a34a;background:#f0fdf4}
+.paper .ft{user-select:none;-webkit-user-select:none}
 .tabs{display:flex;gap:8px;margin-bottom:10px}.tabs button{flex:1;background:var(--bg);color:var(--ink);border:1.5px solid var(--line)}.tabs button.on{background:var(--g);color:#fff;border-color:var(--g)}
 html{-webkit-tap-highlight-color:transparent;overscroll-behavior-y:contain}body{padding-bottom:96px}
 .step{display:none}.step.on{display:block}
@@ -213,6 +216,7 @@ footer{text-align:center;color:var(--mut);font-size:12.5px;padding:10px 16px}
 <footer>এই অ্যাপ কোনো তথ্য জমা রাখে না, সবকিছু আপনার ফোনেই থাকে (“বলে লিখুন” ব্যবহার করলে কথা ব্রাউজারের স্পিচ সেবায় যায়)।<br>জরুরি বিপদে সরাসরি ৯৯৯-এ কল করুন।</footer>
 
 <div id="modal"><div class="box">
+  <div class="hint" style="margin:0 0 8px">✏️ সবুজ ডটেড ঘরের (বিষয় ও বিবরণ) লেখায় চেপে নিজে সম্পাদনা করতে পারবেন। নিচের “জনদূত” লাইন ও সাইটের লিংক পরিবর্তনযোগ্য নয় এবং পাঠানো লেখায় নিজে যুক্ত হবে।</div>
   <div id="letter" class="paper"></div>
   <div class="acts">
     <button id="bPdf">⬇️ PDF ডাউনলোড</button>
@@ -445,17 +449,17 @@ $("go").onclick=()=>{
   $("letter").innerHTML=`<h2>${S?"জনসেবা বিষয়ক আবেদনপত্র":"অভিযোগ ও আবেদনপত্র"}</h2>
   <div class="meta"><span>স্মারক নং: ${memoNo}</span><span>তারিখ: ${dt}</span></div><br>
   বরাবর,<br><b>${esc(offName)}</b><br>${esc(ds)}${up?", "+esc(up):""}।
-  <div class="sub">বিষয়: ${c[3]}।</div>
-  জনাব,<br>বিনীত নিবেদন এই যে, আমি ${esc(place)} এলাকার একজন সচেতন নাগরিক। ${S?`আমাদের এলাকায় “${c[1]}” সংক্রান্ত নিম্নোক্ত সমস্যার কারণে সাধারণ মানুষ চরম দুর্ভোগ পোহাচ্ছে। বিষয়টির প্রতি আপনার সদয় দৃষ্টি আকর্ষণ করছি:`:`আমার এলাকায় “${c[1]}” সংক্রান্ত নিম্নোক্ত ঘটনার প্রতি আপনার সদয় দৃষ্টি আকর্ষণ করছি:`}
+  <div class="sub" contenteditable="true" spellcheck="false">বিষয়: ${c[3]}।</div>
+  <div contenteditable="true" spellcheck="false">জনাব,<br>বিনীত নিবেদন এই যে, আমি ${esc(place)} এলাকার একজন সচেতন নাগরিক। ${S?`আমাদের এলাকায় “${c[1]}” সংক্রান্ত নিম্নোক্ত সমস্যার কারণে সাধারণ মানুষ চরম দুর্ভোগ পোহাচ্ছে। বিষয়টির প্রতি আপনার সদয় দৃষ্টি আকর্ষণ করছি:`:`আমার এলাকায় “${c[1]}” সংক্রান্ত নিম্নোক্ত ঘটনার প্রতি আপনার সদয় দৃষ্টি আকর্ষণ করছি:`}
   <p style="margin:8px 0;padding-left:10px;border-left:3px solid #000">${esc(desc).replace(/\n/g,"<br>")}</p>
   ${map?`ঘটনাস্থলের জিপিএস লোকেশন: ${map}<br>`:""}
   ${att?att+"<br>":""}
   ${!S&&laws.length?`বর্ণিত ঘটনাটি ${laws.map(x=>"“"+esc(x)+"”").join(", ")}-এর আওতায় বিবেচনাযোগ্য হতে পারে। প্রযোজ্য আইন ও ধারা নির্ধারণ তদন্তকারী কর্তৃপক্ষের এখতিয়ারাধীন।<br>`:""}
   ${S?"অতএব, মহোদয়ের নিকট বিনীত প্রার্থনা, জনদুর্ভোগ লাঘবে বিষয়টি সরেজমিনে পরিদর্শন করে প্রয়োজনীয় সংস্কার/সেবা প্রদানের উদ্যোগ ও বরাদ্দ নিশ্চিত করতে আপনার মর্জি হয়।":"অতএব, মহোদয়ের নিকট বিনীত প্রার্থনা, বিষয়টি তদন্ত করে অবিলম্বে আইনানুগ ব্যবস্থা গ্রহণ করতে আপনার মর্জি হয়।"}
-  <br><br>${sign}
+  </div><br><br>${sign}
   ${cc.length?`<br><br><b>অনুলিপি (অবগতি ও প্রয়োজনীয় ব্যবস্থার জন্য):</b><br>${cc.map((x,i)=>bn(i+1)+". "+esc(x)).join("<br>")}`:""}
   ${ids.length?`<div class="att">${ids.map(f=>`<img src="${f.u}" alt="">`).join("")}</div>`:""}
-  <div class="ft">জনদূত দ্বারা প্রস্তুতকৃত (এটি সরকারি ওয়েবসাইট নয়) — ${SITE_URL}</div>`;
+  <div class="ft" contenteditable="false">জনদূত দ্বারা প্রস্তুতকৃত (এটি সরকারি ওয়েবসাইট নয়) — ${SITE_URL}</div>`;
   plain=$("letter").innerText;
   $("ofc").innerHTML=[...new Set([offName,...OFFICES])].map(o=>`<option${o===offName?" selected":""}>${esc(o)}</option>`).join("");
   curDist=ds;fillContact();
@@ -472,26 +476,30 @@ $("bWo").onclick=()=>{const n=$("wa").value.replace(/\D/g,"");
   if(!okWa(n))return toast("বাংলাদেশি নম্বর দিন (880 দিয়ে শুরু)");saveDir();
   window.open("https://wa.me/"+n+"?text="+encodeURIComponent(full()),"_blank")};
 $("bX").onclick=()=>$("modal").classList.remove("show");
+// সম্পাদনার সময় পেস্ট করলে শুধু সাধারণ লেখা বসবে (ফরম্যাট/লিংক নয়)
+$("letter").addEventListener("paste",e=>{const t=e.target.closest&&e.target.closest("[contenteditable=true]");if(!t)return;e.preventDefault();const x=(e.clipboardData||window.clipboardData).getData("text/plain");document.execCommand("insertText",false,x)});
 
 // ===== পিডিএফ: লুকানো ফ্রেমে প্রিন্ট → “Save as PDF” =====
 $("bPdf").onclick=()=>{
   const f=document.createElement("iframe");f.style.cssText="position:fixed;right:0;bottom:0;width:0;height:0;border:0";
   document.body.appendChild(f);const d=f.contentWindow.document;
-  d.open();d.write(`<!DOCTYPE html><html lang="bn"><head><meta charset="utf-8"><title>${curSubject}</title><style>
+  d.open();d.write(`<!DOCTYPE html><html lang="bn"><head><meta charset="utf-8"><title>${esc(getSubject())}</title><style>
   @page{size:A4;margin:18mm}body{font-family:"Noto Serif Bengali","Kalpurush","SolaimanLipi",serif;font-size:14pt;line-height:1.9;color:#000}
   h2{text-align:center;font-size:16pt;border-bottom:2px solid #000;padding-bottom:6px}.meta{display:flex;justify-content:space-between}
   .sub{font-weight:700;text-decoration:underline;margin:10px 0}.att img{max-width:48mm;max-height:36mm;margin:2mm;border:1px solid #888}
-  .ft{margin-top:14px;font-size:10pt;border-top:1px solid #888;padding-top:4px;word-break:break-all}</style></head><body>${$("letter").innerHTML}</body></html>`);
+  .ft{margin-top:14px;font-size:10pt;border-top:1px solid #888;padding-top:4px;word-break:break-all}</style></head><body>${$("letter").innerHTML.replace(/ contenteditable="[a-z]+"/g,"").replace(/ spellcheck="[a-z]+"/g,"")}</body></html>`);
   d.close();
   setTimeout(()=>{f.contentWindow.focus();f.contentWindow.print();setTimeout(()=>f.remove(),3000)},500);
   toast("প্রিন্ট উইন্ডোতে “Save as PDF” বাছাই করুন")};
 
-const full=()=>plain+"\n\n🌐 "+SITE_URL;
+const getPlain=()=>$("letter").innerText.replace(/[ \t]+\n/g,"\n").trim();
+const getSubject=()=>{const e=document.querySelector("#letter .sub");if(!e)return curSubject;const t=e.innerText.replace(/^\s*বিষয়\s*[:：]\s*/,"").replace(/[।\s]+$/,"").trim();return t||curSubject};
+const full=()=>{const t=getPlain(),lock="জনদূত দ্বারা প্রস্তুতকৃত";return (t.includes(lock)?t:t+"\n\n"+lock+" (এটি সরকারি ওয়েবসাইট নয়) — "+SITE_URL)+"\n\n🌐 "+SITE_URL};
 $("bWa").onclick=()=>window.open("https://wa.me/?text="+encodeURIComponent(full()),"_blank");
 $("bCp").onclick=async()=>{try{await navigator.clipboard.writeText(full())}catch(e){const t=document.createElement("textarea");t.value=full();document.body.appendChild(t);t.select();document.execCommand("copy");t.remove()}toast("কপি হয়েছে ✅")};
-$("bSms").onclick=()=>{location.href="sms:?&body="+encodeURIComponent(plain.slice(0,600)+"...\n"+SITE_URL)};
+$("bSms").onclick=()=>{location.href="sms:?&body="+encodeURIComponent(getPlain().slice(0,600)+"...\n"+SITE_URL)};
 $("bSh").onclick=async()=>{
-  const data={title:curSubject,text:full()};
+  const data={title:getSubject(),text:full()};
   if(files.length&&navigator.canShare&&navigator.canShare({files})){data.files=files}
   if(navigator.share){try{await navigator.share(data)}catch(e){}}else toast("এই ব্রাউজারে শেয়ার সাপোর্ট নেই")};
 function mailParts(){const to=$("to").value.trim();
@@ -503,7 +511,7 @@ function mailParts(){const to=$("to").value.trim();
   if(k==="other"&&!known&&!confirm("এই ঠিকানাটি সরকারি ডোমেইনের নয় ("+to+")।\nদপ্তরের অফিসিয়াল ঠিকানা কি না যাচাই করেছেন? তবুও পাঠাবেন?"))return null;
   saveDir();
   const note=files.length?"\n\n[সংযুক্তি: ছবি/ভিডিও ফাইলগুলো ইমেইলে নিজে যুক্ত করুন]":"";
-  return{to,su:"আবেদন: "+curSubject,body:full()+note}}
+  return{to,su:"আবেদন: "+getSubject(),body:full()+note}}
 $("bMail").onclick=()=>{const m=mailParts();if(m)location.href=`mailto:${m.to}?subject=${encodeURIComponent(m.su)}&body=${encodeURIComponent(m.body)}`};
 // Gmail লিংকে লম্বা বাংলা টেক্সট দিলে Error 400 আসে, তাই সংক্ষিপ্ত বডি যায় এবং পুরো দরখাস্ত কপি হয়
 // ===== স্মার্ট সাজানো =====
