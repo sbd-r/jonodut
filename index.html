@@ -166,6 +166,7 @@ footer{text-align:center;color:var(--mut);font-size:12.5px;padding:10px 16px}
     <p class="hint" style="margin-top:8px">সত্য ও প্রমাণসহ অভিযোগ করুন। মিথ্যা বা উদ্দেশ্যপ্রণোদিত অভিযোগ আইনত দণ্ডনীয় হতে পারে।</p>
   </section>
 </main>
+<section class="vision" style="max-width:732px;margin:0 auto 12px"><h2>🎓 শিক্ষার্থীদের জন্য</h2><p style="font-size:14px;color:var(--mut)">গুগল, কোডিং, এআই ও ফ্রিল্যান্সিংয়ের ফ্রি কোর্স এবং বিদেশি স্কলারশিপের সময়সূচি।</p><a class="btn" href="shikkha.html" style="margin-top:8px">ফ্রি কোর্স ও স্কলারশিপ দেখুন →</a></section>
 <section class="vision" id="guide" style="max-width:732px;margin:0 auto 12px">
   <h2>📖 ব্যবহার নির্দেশিকা</h2>
   <div class="gtabs" id="gtabs"><button type="button" class="on" data-t="g1">শুরু করুন</button><button type="button" data-t="g2">পাঠানোর উপায়</button><button type="button" data-t="g3">ভালো অভিযোগের টিপস</button><button type="button" data-t="g4">অ্যাপ ইনস্টল</button><button type="button" data-t="g5">নিরাপত্তা</button></div>
@@ -619,6 +620,36 @@ function showStep(i){si=i;if(i===2){fillOff();renderLaws()}ST.forEach((x,k)=>x.c
 $("next").onclick=()=>{if(si===0&&cat<0)return toast("আগে একটি বিষয় বাছাই করুন");
   if(si===1&&(!val("div")||!val("dist")))return toast("বিভাগ ও জেলা বাছাই করুন");showStep(si+1)};
 $("prev").onclick=()=>showStep(si-1);showStep(0);
+// ===== বিষয়ের পেজ থেকে সরাসরি দরখাস্ত: পেজের নাম → অ্যাপের বিষয় =====
+const TOPIC={"chadabaji":"চাঁদাবাজি","mador":"মাদক ব্যবসা","joun-hoyrani":"যৌন হয়রানি","ghush-durniti":"ঘুষ ও দুর্নীতি","khal-dokhol":"খাল/জলাশয় দখল",
+"jomi-dokhol":"জমি দখল/জালিয়াতি","shima-birodh":"সীমানা বিরোধ","agnikando":"অগ্নিকাণ্ড","chori-dakati":"চুরি/ডাকাতি/ছিনতাই","joutuk-sohingsota":"যৌতুক",
+"balyobibaho":"বাল্যবিবাহ","shishu-nirjatan":"নারী ও শিশু নির্যাতন","manob-pachar":"অন্যান্য (আইনি)","balu-mati-kata":"অবৈধ বালু/মাটি কাটা",
+"bhejal-mojutdari":"খাদ্যে ভেজাল/মজুতদারি","cyber-protarona":"সাইবার অপরাধ/প্রতারণা","tran-bhata-onioyom":"ঘুষ ও দুর্নীতি",
+"shikkha-onioyom":"শিক্ষা প্রতিষ্ঠানে নির্যাতন/বাণিজ্য","shastho-onioyom":"ভেজাল ওষুধ/অবৈধ ক্লিনিক","bidyut-pani-gas":"অন্যান্য (আইনি)",
+"sorok-durghotona":"সড়ক দুর্ঘটনা/ট্রাফিক","rasta-songskar":"রাস্তা ভাঙন/সংস্কার","pani-sorboraho":"পানীয় জল/টিউবওয়েল","rastar-bati":"রাস্তায় বাতি/বিদ্যুৎ",
+"bhata-sahayota":"ভাতা/ত্রাণ/সরকারি সুবিধা","jolabodhota":"জলাবদ্ধতা/নালা-ড্রেন","borjjo-poriccholota":"ময়লা-আবর্জনা/পরিচ্ছন্নতা","student-sohayota":"শিক্ষা উপবৃত্তি/শিক্ষার্থী সুবিধা"};
+function pickTopic(slug){
+  const i=CATS.findIndex(c=>c[1]===TOPIC[slug]);if(i<0)return false;
+  kind=CATS[i][4]==="S"?"S":"L";renderCats();cat=i;filled=-2;
+  const el=document.querySelector('.cat[data-i="'+i+'"]');
+  if(el){document.querySelectorAll(".cat").forEach(x=>x.classList.toggle("on",x===el))}
+  showStep(1);return true}
+function offerTopic(slug){
+  const d=document.createElement("div");d.className="vision";d.style.borderLeftColor="var(--amb)";
+  d.innerHTML='<b>“'+esc(TOPIC[slug])+'” বিষয়ে দরখাস্ত করবেন?</b><div class="row c2" style="margin-top:8px"><button id="tpY" type="button">হ্যাঁ, শুরু করুন</button><button class="alt" id="tpN" type="button">না, অন্য বিষয়</button></div>';
+  $("prog").before(d);
+  $("tpY").onclick=()=>{d.remove();pickTopic(slug)};$("tpN").onclick=()=>d.remove()}
+(function(){
+  const h=decodeURIComponent(location.hash.replace(/^#\/?/,"")).replace(/\.html$/,"");
+  if(TOPIC[h]){pickTopic(h);return}                       // লিংকে #বিষয় থাকলে সরাসরি বাছাই
+  try{const u=new URL(document.referrer);                  // বিষয়ের পেজ থেকে এলে জিজ্ঞাসা করবে
+    const m=u.origin===location.origin&&u.pathname.match(/\/([^\/]+)\.html$/);
+    if(m&&TOPIC[m[1]])offerTopic(m[1])}catch(e){}
+})();
+// লিংকের শেষে #বিষয়-নাম বদলালে (যেমন .../#chadabaji) বিষয় আগে থেকে বাছাই হয়ে ধাপ ২-এ খুলবে
+function applySlug(){let k="";try{k=decodeURIComponent((location.hash||"").slice(1)).replace(/^\/?/,"").replace(/\.html$/,"")}catch(e){}
+  if(TOPIC[k]&&pickTopic(k))toast("বিষয় বাছাই হয়েছে: "+TOPIC[k])}
+addEventListener("hashchange",applySlug);
 $("bGm").onclick=async()=>{const m=mailParts();if(!m)return;
   try{await navigator.clipboard.writeText(full())}catch(e){}
   const short="সংশ্লিষ্ট কর্তৃপক্ষ,\n\nআমার আবেদনটি নিচে/সংযুক্ত আকারে পাঠালাম। (পুরো দরখাস্ত কপি করা আছে — এখানে পেস্ট করুন)\n\nবিষয়: "+curSubject+"\n🌐 "+SITE_URL;

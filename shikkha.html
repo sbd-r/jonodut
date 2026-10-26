@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ফ্রি কোর্স ও স্কলারশিপ — শিক্ষার্থীদের জন্য | জনদূত</title>
+<meta name="description" content="বাংলাদেশের শিক্ষার্থীদের জন্য গুগল, কোডিং, এআই, ফ্রিল্যান্সিংয়ের ফ্রি কোর্স এবং বিদেশি স্কলারশিপের সময়সূচি, অফিসিয়াল লিংকসহ।">
+<link rel="canonical" href="https://sbd-r.github.io/jonodut/shikkha.html">
+<meta name="theme-color" content="#0d1814">
+<link rel="icon" href="icon-192.png">
+<style>
+:root{--bg:#f3f6f4;--card:#fff;--ink:#14231c;--mut:#5c6b63;--line:#d9e2dc;--g:#0b6b4a;--hd:#0d1814;--amb:#e8a317;--red:#c8312b}
+@media(prefers-color-scheme:dark){:root{--bg:#0f1713;--card:#17221c;--ink:#e8f0eb;--mut:#9fb0a6;--line:#2a3a31;--g:#35b985}}
+*{box-sizing:border-box;margin:0}
+body{font-family:"Noto Sans Bengali","Kalpurush",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;padding-bottom:40px}
+header{background:var(--hd);color:#fff;padding:18px 16px;text-align:center}
+header a{color:#b9cbc1;font-size:14px}
+main{max-width:760px;margin:0 auto;padding:14px}
+.note{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--amb);border-radius:10px;padding:12px 14px;font-size:14px;margin-bottom:12px}
+.tabs{display:flex;gap:8px;margin-bottom:12px}
+.tabs button{flex:1;font:inherit;font-weight:600;padding:11px;border-radius:9px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.tabs button.on{background:var(--g);color:#fff;border-color:var(--g)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 14px;margin-bottom:10px}
+.card h3{font-size:16px}.card p{font-size:13.5px;color:var(--mut);margin:3px 0 8px}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:20px;border:1px solid var(--line);margin-right:4px}
+.open{background:#0b6b4a22;color:var(--g);border-color:var(--g)}.shut{background:#c8312b18;color:var(--red);border-color:var(--red)}
+.card a{display:inline-block;background:var(--g);color:#fff;text-decoration:none;border-radius:8px;padding:7px 13px;font-size:14px;font-weight:600}
+h2{font-size:17px;margin:14px 0 8px}
+.hid{display:none}
+</style>
+</head>
+<body>
+<header><b style="font-size:22px">🎓 শিক্ষার্থীদের জন্য</b><br><a href="./">← জনদূত-এ ফিরুন</a></header>
+<main>
+<div class="note"><b>সর্বশেষ যাচাই: <span id="upd"></span>।</b> স্কলারশিপের তারিখ প্রায়ই বদলায় এবং আমি নিজে অফিসিয়াল সাইটে সব তারিখ নিশ্চিত করতে পারিনি। আবেদনের আগে প্রতিটি লিংকে গিয়ে নিজে মিলিয়ে নিন। জনদূত কোনো কোর্স বা স্কলারশিপ দেয় না। <b>আবেদনের নামে কেউ টাকা চাইলে সাবধান হোন, সঠিক স্কলারশিপে আবেদনের ফি লাগে না।</b></div>
+<div class="tabs"><button class="on" data-t="c">📚 ফ্রি কোর্স</button><button data-t="s">🌍 স্কলারশিপ</button></div>
+<div id="c"></div><div id="s" class="hid"></div>
+<p class="note" style="margin-top:12px;font-size:13px">কোন প্রতিষ্ঠান বা ব্যক্তির কোর্স যোগ করতে চান জানান। এখানে শুধু অফিসিয়াল লিংক দেওয়া হয়, কোনো কোর্সের সাথে জনদূতের আর্থিক সম্পর্ক নেই।</p>
+</main>
+<script>
+const C=[
+["এআই ও গুগল",[
+["Google Skills (গুগল স্কিলস)","গুগল ক্লাউড, ডিপমাইন্ড ও Grow with Google-এর প্রায় ৩০০০ কোর্স ও ল্যাব এক জায়গায়। কিছু কোর্স ফ্রি, সার্টিফিকেট বা পূর্ণ অ্যাক্সেস পেইড হতে পারে।","https://www.skills.google"],
+["Google AI Essentials","এআই শেখার শুরুর কোর্স, কোনো আগের জ্ঞান লাগে না। Coursera-তে ফ্রি অডিট করা যায়, সার্টিফিকেট পেইড।","https://grow.google/ai-essentials/"],
+["Google Skillshop","গুগল অ্যাডস, অ্যানালিটিক্স ও ইউটিউবের অফিসিয়াল ফ্রি কোর্স ও পরীক্ষা, সার্টিফিকেটসহ।","https://skillshop.withgoogle.com"],
+["Grow with Google","ডিজিটাল মার্কেটিং, ডেটা, আইটি সাপোর্টসহ গুগলের ক্যারিয়ার প্রশিক্ষণ।","https://grow.google"]]],
+["কোডিং",[
+["freeCodeCamp","ওয়েব ডেভেলপমেন্ট, পাইথন, ডেটা সায়েন্স, সম্পূর্ণ ফ্রি, প্র্যাকটিসসহ।","https://www.freecodecamp.org"],
+["Harvard CS50","হার্ভার্ডের বিখ্যাত কম্পিউটার সায়েন্স কোর্স, ইউটিউব ও ওয়েবসাইটে ফ্রি।","https://cs50.harvard.edu/x/"],
+["Khan Academy","স্কুল-কলেজের গণিত, বিজ্ঞান ও কম্পিউটার প্রোগ্রামিং ফ্রি।","https://www.khanacademy.org"],
+["DeepLearning.AI (অ্যান্ড্রু এনজি)","এআই ও মেশিন লার্নিংয়ের ছোট ছোট কোর্স, অনেকগুলো ফ্রি।","https://www.deeplearning.ai/short-courses/"],
+["Coursera ফিন্যান্সিয়াল এইড","আবেদন করে পেইড কোর্সে সহায়তা বা ফ্রি অ্যাক্সেস পাওয়ার সুযোগ আছে, প্রতিটি কোর্সে আলাদা।","https://www.coursera.org"]]],
+["ফ্রিল্যান্সিং ও দক্ষতা (বাংলাদেশ)",[
+["BASIS SEIP ফ্রি আইটি প্রশিক্ষণ","সরকারি প্রকল্পের অধীনে বিনামূল্যে পেশাদার আইটি কোর্স, ব্যাচ অনুযায়ী ভর্তি।","https://seip.basis.org.bd"],
+["যুব উন্নয়ন অধিদপ্তর: ফ্রিল্যান্সিং প্রশিক্ষণ","জেলা পর্যায়ে ফ্রি ফ্রিল্যান্সিং প্রশিক্ষণ। প্রতি ব্যাচের আলাদা বিজ্ঞপ্তি আসে, ৮ম ব্যাচের পরীক্ষা সেপ্টেম্বর ২০২৬-এ হয়েছে। পরের ব্যাচের বিজ্ঞপ্তি নিজ জেলার যুব উন্নয়ন কার্যালয়ে দেখুন।","https://dyd.gov.bd"],
+["আইএসডিবি-বিআইএসইডব্লিউ আইটি স্কলারশিপ","নন-আইটি স্নাতকদের জন্য ফ্রি আইটি প্রশিক্ষণ, রাউন্ড ভিত্তিক। নতুন রাউন্ডের বিজ্ঞপ্তি পত্রিকায় আসে, প্রথম আলো বা দৈনিক পত্রিকায় দেখুন।",""]]]];
+const S=[
+["বন্ধ","Commonwealth Master’s/PhD (যুক্তরাজ্য)","২০২৭ সালের চক্র ২০ অক্টোবর ২০২৬-এ শেষ। পরের চক্রের জন্য প্রস্তুতি নিন।","https://cscuk.fcdo.gov.uk","2026-10-20"],
+["অনিশ্চিত","Chevening (যুক্তরাজ্য)","মাস্টার্স। ২০২৬ চক্রের শেষ তারিখ সূত্রভেদে আলাদা (অক্টোবর/নভেম্বর)। অফিসিয়াল সাইটে দেখুন।","https://www.chevening.org"],
+["খোলা","Erasmus Mundus (ইউরোপ)","জয়েন্ট মাস্টার্স। প্রোগ্রামভেদে ডেডলাইন অক্টোবর ২০২৬ থেকে জানুয়ারি ২০২৭।","https://erasmus-plus.ec.europa.eu","2027-01-31"],
+["আসন্ন","Gates Cambridge (যুক্তরাজ্য)","মাস্টার্স/পিএইচডি। সূত্রমতে ডেডলাইন ৮ ডিসেম্বর ২০২৬ বা ৬ জানুয়ারি ২০২৭, কোর্সভেদে।","https://www.gatescambridge.org","2027-01-06"],
+["আসন্ন","Stipendium Hungaricum (হাঙ্গেরি)","সাধারণত জানুয়ারির মাঝামাঝি। নতুন ঘোষণা না আসা পর্যন্ত তারিখ নিশ্চিত নয়।","https://stipendiumhungaricum.hu"],
+["আসন্ন","Türkiye Scholarships (তুরস্ক)","সাধারণত ১০ জানুয়ারি থেকে ২০ ফেব্রুয়ারি।","https://turkiyeburslari.gov.tr"],
+["আসন্ন","Joint Japan/World Bank (জেজেডব্লিউবিজিএসপি)","মাস্টার্স, উন্নয়ন-বিষয়ক। ২০২৭-এর শুরুতে আবেদন খুলতে পারে।","https://www.worldbank.org"],
+["আসন্ন","Global Korea Scholarship (GKS)","স্নাতকোত্তর সাধারণত ফেব্রুয়ারি–মার্চ। দূতাবাসের নোটিশ দেখুন।","https://www.studyinkorea.go.kr"],
+["আসন্ন","China Government Scholarship (CSC)","সাধারণত ডিসেম্বর থেকে এপ্রিল। ঢাকার চীনা দূতাবাস ও বিশ্ববিদ্যালয়ের নোটিশ দেখুন।","https://www.campuschina.org"],
+["আসন্ন","Australia Awards","সাধারণত ফেব্রুয়ারি–এপ্রিলে খোলে, ২০২৮ সালের ভর্তির জন্য।","https://www.australiaawards.gov.au"],
+["আসন্ন","MEXT (জাপান)","দূতাবাস সুপারিশে, সাধারণত এপ্রিল–মে।","https://www.studyinjapan.go.jp"],
+["কোর্সভেদে","DAAD (জার্মানি)","প্রতিটি কোর্সের নিজস্ব ডেডলাইন, বেশিরভাগ আগস্ট–অক্টোবর।","https://www.daad.de"]];
+// ===== নিয়মিত হালনাগাদ =====
+// ১) শেষ যাচাইয়ের তারিখ (তথ্য বদলালে এটিও বদলান)
+const UPDATED="২৬ অক্টোবর ২০২৬";
+// ২) চাইলে Google Sheet দিয়ে ফোন থেকেই তথ্য বদলান: Sheet → File → Share → Publish to web → CSV লিংক এখানে বসান। ফাঁকা থাকলে নিচের তথ্যই দেখাবে।
+// কলাম: ধরন(c=কোর্স, s=স্কলারশিপ) | গ্রুপ (কোর্সের জন্য) | নাম | বিবরণ | লিংক | শেষ তারিখ (YYYY-MM-DD, স্কলারশিপের জন্য)
+const SHEET_CSV="";
+const bn=n=>String(n).replace(/\d/g,d=>"০১২৩৪৫৬৭৮৯"[d]);
+const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const safe=u=>/^https:\/\//.test(u||"")?u:"";
+const L=(u,t)=>safe(u)?`<a href="${esc(u)}" target="_blank" rel="noopener noreferrer">${t}</a>`:"";
+function stat(i){ // i=[অবস্থা,নাম,বিবরণ,লিংক,শেষতারিখ]
+  if(i[4]){const d=new Date(i[4]+"T23:59:59"),n=Math.ceil((d-new Date())/864e5);
+    if(n<0)return["বন্ধ","shut",9e9];
+    return[n<=30?"শীঘ্রই শেষ ("+bn(n)+" দিন)":"খোলা","open",n]}
+  return[i[0],i[0]==="বন্ধ"?"shut":"open",i[0]==="বন্ধ"?9e9:5e8]}
+function render(){
+  document.getElementById("upd").textContent=UPDATED;
+  document.getElementById("c").innerHTML=C.map(g=>`<h2>${esc(g[0])}</h2>`+g[1].map(i=>`<div class="card"><h3>${esc(i[0])}</h3><p>${esc(i[1])}</p>${L(i[2],"অফিসিয়াল সাইট →")}</div>`).join("")).join("");
+  document.getElementById("s").innerHTML=S.map(i=>({i,t:stat(i)})).sort((a,b)=>a.t[2]-b.t[2]).map(({i,t})=>
+    `<div class="card"><span class="tag ${t[1]}">${esc(t[0])}</span>${i[4]?`<span class="tag">শেষ তারিখ: ${bn(i[4].split("-").reverse().join("/"))}</span>`:""}<h3>${esc(i[1])}</h3><p>${esc(i[2])}</p>${L(i[3],"অফিসিয়াল সাইট →")}</div>`).join("")}
+function csv(t){const r=[];let row=[],f="",q=false;
+  for(let k=0;k<t.length;k++){const c=t[k];
+    if(q){if(c=='"'){if(t[k+1]=='"'){f+='"';k++}else q=false}else f+=c}
+    else if(c=='"')q=true;else if(c==","){row.push(f);f=""}
+    else if(c=="\n"||c=="\r"){if(c=="\r"&&t[k+1]=="\n")k++;row.push(f);r.push(row);row=[];f=""}else f+=c}
+  row.push(f);r.push(row);return r.filter(x=>x.join("").trim())}
+if(SHEET_CSV){fetch(SHEET_CSV).then(r=>r.text()).then(t=>{
+  const rows=csv(t).slice(1),cc={},ss=[];
+  rows.forEach(x=>{const k=(x[0]||"").trim().toLowerCase();
+    if(k==="c"){(cc[x[1]||"অন্যান্য"]=cc[x[1]||"অন্যান্য"]||[]).push([x[2],x[3],x[4]])}
+    else if(k==="s")ss.push(["আসন্ন",x[2],x[3],x[4],(x[5]||"").trim()])});
+  if(Object.keys(cc).length)C.length=0,Object.entries(cc).forEach(e=>C.push(e));
+  if(ss.length)S.length=0,ss.forEach(e=>S.push(e));
+}).catch(()=>{}).finally(render)}else render();
+document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{document.querySelectorAll(".tabs button").forEach(x=>x.classList.toggle("on",x===b));["c","s"].forEach(k=>document.getElementById(k).classList.toggle("hid",k!==b.dataset.t))});
+</script>
+</body>
+</html>
