@@ -985,7 +985,7 @@ function applyLang(){
     trTree(document.body);startObs()}
   else{
     document.title="জনদূত (Jonodut) — জানুন, লিখুন, পাঠান: থানা, দুদক, UNO-তে অভিযোগ ও দরখাস্ত ফ্রি";
-    TR_NODES.forEach(n=>{const o=ORIG.get(n);if(o!==undefined&&n.isConnected){LASTO.set(n,o);n.nodeValue=o}});
+    TR_NODES.forEach(n=>{const o=ORIG.get(n);if(o!==undefined&&n.isConnected){LASTO.delete(n);n.nodeValue=o}});
     TR_NODES.clear();
     TR_ATTR.forEach(el=>{ATTRS.forEach(a=>{const o=el.getAttribute("data-o-"+a);if(o!==null){el.setAttribute(a,o);el.removeAttribute("data-o-"+a)}})});
     TR_ATTR.clear()}
