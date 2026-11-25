@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
 Sitemap: https://sbd-r.github.io/jonodut/sitemap.xml
+Sitemap: https://sbd-r.github.io/jonodut/sitemap-2.xml
